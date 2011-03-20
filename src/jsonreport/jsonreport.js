@@ -3,6 +3,7 @@
  * Open Source under the New BSD Licence: https://github.com/AjaxStack/AjaxStack/blob/master/LICENSE
  */
 
+//for non-modern browsers i.e: <=IE8
 !window.JSON && document.write(unescape('%3Cscript src=""http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js""%3E%3C/script%3E'));
 
 var cssText =
@@ -87,15 +88,6 @@ _.jsonreport = (function(){
       return sb;
     }
 
-    function addEvent(obj, type, fn) {
-      if ( obj.attachEvent ) {
-        obj['e'+type+fn] = fn;
-        obj[type+fn] = function(){obj['e'+type+fn]( root.event );}
-        obj.attachEvent( 'on'+type, obj[type+fn] );
-      } else
-        obj.addEventListener( type, fn, false );
-    }
-
     function setTableBody(tbody, html) {
       if (!isIE) { tbody.innerHTML = html; return; }
       var temp = tbody.ownerDocument.createElement('div');
@@ -122,6 +114,15 @@ _.jsonreport = (function(){
     function enc(html) {
       if (typeof html != 'string') return html;
       return html.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function addEvent(obj, type, fn) {
+      if ( obj.attachEvent ) {
+        obj['e'+type+fn] = fn;
+        obj[type+fn] = function(){obj['e'+type+fn]( root.event );}
+        obj.attachEvent( 'on'+type, obj[type+fn] );
+      } else
+        obj.addEventListener( type, fn, false );
     }
 
     addEvent(doc, 'click', function (e) {
