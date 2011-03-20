@@ -1,6 +1,6 @@
 /**
  * Created by demis.bellot@gmail.com
- * New BSD Licence: https://github.com/AjaxStack/AjaxStack/blob/master/LICENSE
+ * Open Source under the New BSD Licence: https://github.com/AjaxStack/AjaxStack/blob/master/LICENSE
  */
 
 !window.JSON && document.write(unescape('%3Cscript src=""http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js""%3E%3C/script%3E'));
