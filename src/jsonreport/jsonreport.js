@@ -48,6 +48,7 @@ _.jsonreport = (function(){
     var tbls = [];
 
     function val(m) {
+      if (m == null) return 'null';
       if (typeof m == 'undefined') return '';
       if (typeof m == 'number') return num(m);
       if (typeof m == 'string') return str(m);
